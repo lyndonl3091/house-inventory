@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>House Inventor</title>
+
+  <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/bower_components/angular/angular.js"></script>
+
+  <script src="/js/module.js"></script>
+  <script src="/js/controllers.js"></script>
+  <script src="/js/services.js"></script>
+
+</head>
+<body ng-app='myApp' ng-controller='mainCtrl'>
+  <div class="container">
+
+    <h1>Housing inventory</h1>
+
+    <div>
+      <h4>Search:</h4>
+      <input type="text" placeholder="Search" ng-model='searchFilter'>
+    </div>
+
+    <form ng-submit='addItem()'>
+
+          <div class="form-group">
+            <label >Description</label>
+            <input type="text" class="form-control" placeholder="Item" ng-model='item.name' required>
+          </div>
+          <div class="form-group">
+            <label class="sr-only">Amount (in dollars)</label>
+            <div class="input-group">
+              <div class="input-group-addon">$</div>
+              <input type="number" class="form-control" step='0.01' min=0 placeholder="Amount" ng-model='item.value' required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label >Room</label>
+            <input type="text" class="form-control" placeholder="Room" ng-model='item.room' required>
+          </div>
+
+
+
+          <button class="btn btn-default">Submit</button>
+    </form>
+
+
+    <table class="table table-hover">
+      <thead>
+        <th>Name</th>
+        <th>Value</th>
+        <th>Room</th>
+      </thead>
+      <tbody>
+
+        
+        <!-- <tr ng-repeat ='item in items | filter: searchFilter track by $index'>
+            <td>{{item.name}}</td>
+            <td>{{item.value}}</td>
+            <td>{{item.room}}</td>
+        </tr> -->
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>Totals:</td>
+          <td>{{total | currency}}</td>
+        </tr>
+      </tfoot>
+
+    </table>
+
+
+
+  </div>
+</body>
+</html>
